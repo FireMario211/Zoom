@@ -22,6 +22,11 @@
             "importance": "required"
         }
 	},
+	"resources": {
+        "sprites": [
+            "resources/*.png"
+        ]
+    },
 	"tags": [
 		"enhancement",
 		"interface",
