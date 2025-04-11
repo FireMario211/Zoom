@@ -1,7 +1,7 @@
 {
 	"geode": "4.3.1",
 	"gd": {
-		"win": "*"
+		"win": "2.207"
 	},
 	"id": "bobby_shmurner.zoom",
 	"name": "Zoooom!",
