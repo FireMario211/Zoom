@@ -3,7 +3,6 @@
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 
 #include <Geode/Geode.hpp>
-#include <Geode/loader/SettingEvent.hpp>
 
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/PauseLayer.hpp>
@@ -325,7 +324,7 @@ $execute {
 		ZoomManager::get()->autoShowMenu = enable;
 	});
 
-	ZoomManager::get()->autoShowMenu = Mod::get()->getSettingValue<bool>("alt-disables-zoom");
+	ZoomManager::get()->altDisablesZoom = Mod::get()->getSettingValue<bool>("alt-disables-zoom");
 	listenForSettingChanges("alt-disables-zoom", +[](bool enable) {
 		ZoomManager::get()->altDisablesZoom = enable;
 	});
