@@ -1,26 +1,26 @@
 {
-	"geode": "3.4.0",
+	"geode": "4.3.1",
 	"gd": {
-		"win": "2.206"
+		"win": "*"
 	},
 	"id": "bobby_shmurner.zoom",
 	"name": "Zoooom!",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"developer": "Bobby Shmurner",
 	"description": "Allows you to zoom while paused!",
-	"repository": "https://github.com/BobbyShmurner/Zoom",
-	"dependencies": [
-        {
-            "id": "geode.node-ids",
-            "version": ">=v1.13.0",
-            "importance": "required"
-        },
-		{
-            "id": "geode.custom-keybinds",
-            "version": ">=v1.6.2",
+	"links": {
+		"source": "https://github.com/BobbyShmurner/Zoom"
+	},
+	"dependencies": {
+		"geode.node-ids": {
+			"version": ">=v1.20.1",
+			"importance": "required"
+		},
+		"geode.custom-keybinds": {
+            "version": ">=v1.10.3",
             "importance": "required"
         }
-    ],
+	},
 	"tags": [
 		"enhancement",
 		"interface",

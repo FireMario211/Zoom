@@ -1,3 +1,6 @@
+# 1.1.1
+Version Bump
+
 # 1.1.0
 Added "Alt Disables Zoom" options to enable better compatibility with HJfod's [Quick Volume Controls](https://github.com/HJfod/volume-scroll-wheel) mod
 
