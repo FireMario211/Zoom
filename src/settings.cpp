@@ -1,10 +1,13 @@
 #include "settings.hpp"
 
-#include <geode.custom-keybinds/include/Keybinds.hpp>
 #include <Geode/Geode.hpp>
 
 using namespace geode::prelude;
+
+#if defined(GEODE_IS_WINDOWS)
+#include <geode.custom-keybinds/include/Keybinds.hpp>
 using namespace keybinds;
+#endif
 
 SettingsManager* SettingsManager::get() {
 	static auto inst = new SettingsManager;

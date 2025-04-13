@@ -1,7 +1,5 @@
 #include <charconv>
 
-#include <geode.custom-keybinds/include/Keybinds.hpp>
-
 #include <Geode/Geode.hpp>
 
 #include <Geode/modify/MenuLayer.hpp>
@@ -15,12 +13,11 @@
 
 #include "settings.hpp"
 
-using namespace geode::prelude;
-using namespace keybinds;
-
 #if defined(GEODE_IS_ANDROID) || defined(GEODE_IS_IOS)
 #include "mobile.hpp"
 #endif
+
+using namespace geode::prelude;
 
 float clamp(float d, float min, float max) {
 	const float t = d < min ? min : d;
