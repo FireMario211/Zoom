@@ -1,3 +1,6 @@
+# 1.2.1
+Fixed a bug where the mobile zoom menu wouldn't open sometimes
+
 # 1.2.0
 Added Mobile Support!
 
