@@ -11,6 +11,11 @@ using namespace geode::prelude;
 AndroidZoomLayer* AndroidZoomLayer::instance = nullptr;
 	
 AndroidZoomLayer* AndroidZoomLayer::create(CCNode* sceneLayer) {
+	if (instance) {
+		instance = nullptr;
+		geode::log::info("AndroidZoomLayer already exists, deleting it!");
+	}
+
 	auto layer = new AndroidZoomLayer();
 	if (layer && layer->init(sceneLayer)) {
 		layer->autorelease();
@@ -22,14 +27,6 @@ AndroidZoomLayer* AndroidZoomLayer::create(CCNode* sceneLayer) {
 	return nullptr;
 }
 
-AndroidZoomLayer* AndroidZoomLayer::getOrCreate(CCNode* sceneLayer) {
-	if (instance) {
-		return instance;
-	}
-
-	return create(sceneLayer);
-}
-
 bool AndroidZoomLayer::init(CCNode* sceneLayer) {
 	if (!CCLayer::init())
 		return false;
@@ -38,7 +35,6 @@ bool AndroidZoomLayer::init(CCNode* sceneLayer) {
 		geode::log::error("Scene layer is null!");
 		return false;
 	}
-
 
 	if (sceneLayer->getChildByID("AnodroidZoomLayer")) {
 		geode::log::error("AnodroidZoomLayer already exists in scene!");
@@ -196,7 +192,7 @@ class $modify(AndroidZoomPauseLayer, PauseLayer) {
 	}
 
 	void onZoomButton(CCObject* sender) {
-		AndroidZoomLayer* layer = AndroidZoomLayer::getOrCreate(this->getParent());
+		AndroidZoomLayer::create(this->getParent());
 	}
 };
 

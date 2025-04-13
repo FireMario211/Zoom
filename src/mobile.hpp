@@ -9,9 +9,7 @@ using namespace geode::prelude;
 class AndroidZoomLayer : public CCLayer {
 public:
 	static AndroidZoomLayer* instance;
-
 	static AndroidZoomLayer* create(CCNode* sceneLayer);
-	static AndroidZoomLayer* getOrCreate(CCNode* sceneLayer);
 
 	bool init(CCNode* sceneLayer);
 	bool ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) override;
@@ -20,7 +18,6 @@ public:
 	void ccTouchCancelled(CCTouch* pTouch, CCEvent* pEvent) override;
 	void onBackButton(CCObject* sender);
 	void onBackButton23(CCObject* sender);
-
 	void removeTouchEvent(CCTouch* pTouch, CCEvent* pEvent);
 private:
 	CCPoint getAnchorPoint(CCTouch* touch1, CCTouch* touch2);
