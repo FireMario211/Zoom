@@ -15,7 +15,7 @@ jobs:
         - name: Windows
           os: windows-latest
 
-        - name: macOS
+        - name: IOS
           os: macos-latest
           target: IOS
 
