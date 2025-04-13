@@ -1,7 +1,7 @@
-#ifdef GEODE_IS_ANDROID
+#if defined(GEODE_IS_ANDROID) || defined(GEODE_IS_IOS)
 
 #include "utils.hpp"
-#include "android.hpp"
+#include "mobile.hpp"
 #include "settings.hpp"
 
 #include <algorithm>
@@ -200,4 +200,4 @@ class $modify(AndroidZoomPauseLayer, PauseLayer) {
 	}
 };
 
-#endif // GEODE_IS_ANDROID
+#endif // GEODE_IS_ANDROID || GEODE_IS_IOS

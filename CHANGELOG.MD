@@ -1,3 +1,10 @@
+# 1.2.0
+Added Mobile Support!
+
+NOTE: IOS is completely untested because I don't own one :)
+
+If there are any issues, please report them on GitHub and I'll do my best to fix them
+
 # 1.1.1
 Version Bump
 

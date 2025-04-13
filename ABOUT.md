@@ -4,9 +4,16 @@ Allows you to zoom while on the pause menu!
 
 # Controls
 
+## Windows
+
 - Scroll Wheel to zoom in and out
 - Middle click to pan the camera around
 - Home to toggle the pause menu (Can be customised from the Custom Keybinds editor)
+
+## Mobile
+
+- Press the magnifying glass button in the pause menu to enter Zoooom Mode (TM)
+- When in Zoooom Mode (TM), you can pinch to zoom and when you're done, you can exit using the back button in the top left 
 
 # Known Bugs
 

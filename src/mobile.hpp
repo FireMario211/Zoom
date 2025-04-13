@@ -1,4 +1,4 @@
-#ifdef GEODE_IS_ANDROID
+#if defined(GEODE_IS_ANDROID) || defined(GEODE_IS_IOS)
 #pragma once
 
 #include <Geode/Geode.hpp>
@@ -34,4 +34,4 @@ private:
 	std::vector<CCTouch*> m_touches = {};
 };
 
-#endif 
+#endif // GEODE_IS_ANDROID || GEODE_IS_IOS

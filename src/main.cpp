@@ -18,8 +18,8 @@
 using namespace geode::prelude;
 using namespace keybinds;
 
-#if defined(GEODE_IS_ANDROID)
-#include "android.hpp"
+#if defined(GEODE_IS_ANDROID) || defined(GEODE_IS_IOS)
+#include "mobile.hpp"
 #endif
 
 float clamp(float d, float min, float max) {
@@ -34,6 +34,8 @@ $execute {
 		geode::log::info("Windows detected.");
 	#elif defined(GEODE_IS_ANDROID)
 		geode::log::info("Android detected.");
+	#elif defined(GEODE_IS_IOS)
+		geode::log::info("IOS detected.");
 	#else
 		geode::log::error("Unknown platform detected.");
 		return;
