@@ -3,6 +3,27 @@
 #include "utils.hpp"
 using namespace geode::prelude;
 
+void zoomPlayLayer(CCNode* playLayer, float delta, CCPoint anchorPoint) {
+	if (!playLayer) return;
+
+	float oldScale = playLayer->getScale();
+	float newScale;
+
+	if (delta < 0) {
+		newScale = oldScale / (1 - delta);
+	} else {
+		newScale = oldScale * (1 + delta);
+	}
+
+	if (newScale < 1.0f) newScale = 1.0f;
+	
+	CCPoint deltaFromAnchorPrev = playLayer->getPosition() - anchorPoint;
+
+	playLayer->setPosition(anchorPoint);
+	playLayer->setScale(newScale);
+	playLayer->setPosition(anchorPoint + deltaFromAnchorPrev * newScale / oldScale);
+}
+
 CCSize getScreenSize() {
 	float screenTop = CCDirector::sharedDirector()->getScreenTop();
 	float screenBottom = CCDirector::sharedDirector()->getScreenBottom();
@@ -12,8 +33,7 @@ CCSize getScreenSize() {
 	return CCSize{ screenRight - screenLeft, screenTop - screenBottom };
 }
 
-void clampPlayLayerPos() {
-	CCNode* playLayer = CCScene::get()->getChildByID("PlayLayer");
+void clampPlayLayerPos(CCNode* playLayer) {
 	if (!playLayer) return;
 
 	CCPoint pos = playLayer->getPosition();

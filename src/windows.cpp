@@ -46,34 +46,19 @@ void WindowsZoomManager::setZoom(float zoom) {
 	if (!playLayer) return;
 
 	playLayer->setScale(zoom);
-	onScreenResize();
+	onScreenModified();
 }
 
 void WindowsZoomManager::zoom(float delta) {
 	CCNode* playLayer = CCScene::get()->getChildByID("PlayLayer");
 	if (!playLayer) return;
 
-	CCSize contentSize = playLayer->getContentSize();
-	float oldScale = playLayer->getScale();
-	float newScale;
-
-	if (delta < 0) {
-		newScale = oldScale / (1 - delta);
-	} else {
-		newScale = oldScale * (1 + delta);
-	}
-
-	if (newScale < 1.0f) newScale = 1.0f;
-	
 	CCPoint mouseScreenPos = getMousePosOnScreen();
+	CCSize contentSize = playLayer->getContentSize();
 	CCPoint anchorPoint = CCPoint { mouseScreenPos.x - contentSize.width / 2, -mouseScreenPos.y + contentSize.height / 2};
-	CCPoint deltaFromAnchorPrev = playLayer->getPosition() - anchorPoint;
 
-	playLayer->setPosition(anchorPoint);
-	playLayer->setScale(newScale);
-	playLayer->setPosition(anchorPoint + deltaFromAnchorPrev * newScale / oldScale);
-	
-	onScreenResize();
+	zoomPlayLayer(playLayer, delta, anchorPoint);
+	onScreenModified();
 }
 
 void WindowsZoomManager::move(CCPoint delta) {
@@ -83,7 +68,7 @@ void WindowsZoomManager::move(CCPoint delta) {
 	CCPoint pos = playLayer->getPosition();
 	playLayer->setPosition(pos + delta);
 
-	onScreenMove();
+	onScreenModified();
 }
 
 void WindowsZoomManager::setPos(float x, float y) {
@@ -92,7 +77,7 @@ void WindowsZoomManager::setPos(float x, float y) {
 
 	playLayer->setPosition(CCPoint{ x, y });
 
-	onScreenMove();
+	onScreenModified();
 }
 
 float WindowsZoomManager::getZoom() {
@@ -163,27 +148,15 @@ void WindowsZoomManager::onScroll(float y, float x) {
 	}
 }
 
-void WindowsZoomManager::onScreenResize() {
-	clampPlayLayerPos();
-	if (!isPaused) return;
-
+void WindowsZoomManager::onScreenModified() {
 	CCNode* playLayer = CCScene::get()->getChildByID("PlayLayer");
 	if (!playLayer) return;
+
+	clampPlayLayerPos(playLayer);
+	if (!isPaused) return;
 
 	if (SettingsManager::get()->autoShowMenu && playLayer->getScale() == 1.0f) {
 		setPauseMenuVisible(true);
-	}
-}
-
-void WindowsZoomManager::onScreenMove() {
-	clampPlayLayerPos();
-	if (!isPaused) return;
-
-	CCNode* playLayer = CCScene::get()->getChildByID("PlayLayer");
-	if (!playLayer) return;
-
-	if (SettingsManager::get()->autoHideMenu && playLayer->getScale() != 1.0f) {
-		setPauseMenuVisible(false);
 	}
 }
 

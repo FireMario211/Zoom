@@ -116,7 +116,7 @@ void AndroidZoomLayer::ccTouchMoved(CCTouch* pTouch, CCEvent* pEvent) {
 		auto delta = touch->getDelta();
 		auto pos = m_playLayer->getPosition();
 		m_playLayer->setPosition(pos.x + delta.x, pos.y + delta.y);
-		clampPlayLayerPos();
+		clampPlayLayerPos(m_playLayer);
 	} else {
 		// TODO: Add zoom functionality here
 	}

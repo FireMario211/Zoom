@@ -34,7 +34,6 @@ public:
 	void onPause();
 	void onScroll(float y, float x);
 private:
-	void onScreenResize();
-	void onScreenMove();
+	void onScreenModified();
 };
 #endif // GEODE_IS_WINDOWS
