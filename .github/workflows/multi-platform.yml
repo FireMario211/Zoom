@@ -15,8 +15,9 @@ jobs:
         - name: Windows
           os: windows-latest
 
-        - name: IOS
+        - name: iOS
           os: macos-latest
+          target: iOS
 
         - name: Android32
           os: ubuntu-latest
@@ -38,6 +39,7 @@ jobs:
           bindings: geode-sdk/bindings
           bindings-ref: main
           combine: true
+          sdk: nightly
           target: ${{ matrix.config.target }}
 
   package:
