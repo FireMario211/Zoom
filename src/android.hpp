@@ -22,6 +22,8 @@ public:
 	void onBackButton23(CCObject* sender);
 private:
 	CCNode* m_sceneLayer;
+	CCNode* m_playLayer;
+	CCNode* m_pauseLayer;
 	std::vector<CCTouch*> m_touches = {};
 };
 

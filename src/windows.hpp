@@ -27,7 +27,6 @@ public:
 	void move(CCPoint delta);
 
 	float getZoom();
-	CCSize getScreenSize();
 	CCPoint getMousePosOnScreen();
 	CCPoint getMousePosOnNode(CCNode* node);
 	
@@ -36,7 +35,6 @@ public:
 	void onScroll(float y, float x);
 private:
 	void onScreenResize();
-	void clampPos();
 	void onScreenMove();
 };
 #endif // GEODE_IS_WINDOWS

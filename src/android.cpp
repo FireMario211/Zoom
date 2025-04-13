@@ -1,5 +1,6 @@
 // #ifdef GEODE_IS_ANDROID64
 
+#include "utils.hpp"
 #include "android.hpp"
 #include "settings.hpp"
 
@@ -47,7 +48,20 @@ bool AndroidZoomLayer::init(CCNode* sceneLayer) {
 	m_sceneLayer = sceneLayer;
 	m_sceneLayer->addChild(this);
 
-	m_sceneLayer->getChildByID("PauseLayer")->setVisible(false);
+	m_playLayer = m_sceneLayer->getChildByID("PlayLayer");
+
+	if (!m_playLayer) {
+		geode::log::error("PlayLayer is null!");
+		return false;
+	}
+
+	m_pauseLayer = m_sceneLayer->getChildByID("PauseLayer");
+	if (!m_pauseLayer) {
+		geode::log::error("PauseLayer is null!");
+		return false;
+	}
+
+	m_pauseLayer->setVisible(false);
 
 	// Thanks SillyDoggo for the code snippet :D
 	// https://github.com/TheSillyDoggo/GeodeMenu/blob/17b19215b80a263379a560edfaf63c2a3f17e2f8/src/Client/AndroidUI.cpp#L28
@@ -84,7 +98,9 @@ bool AndroidZoomLayer::init(CCNode* sceneLayer) {
 void AndroidZoomLayer::onBackButton(CCObject* sender) {
 	geode::log::info("Back button pressed in AndroidZoomLayer!");
 
-	m_sceneLayer->getChildByID("PauseLayer")->setVisible(true);
+	m_playLayer->setScale(1.0f);
+	m_playLayer->setPosition(ccp(0, 0));
+	m_pauseLayer->setVisible(true);
 	this->removeFromParentAndCleanup(true);
 	AndroidZoomLayer::instance = nullptr;
 }
@@ -95,7 +111,15 @@ bool AndroidZoomLayer::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
 }
 
 void AndroidZoomLayer::ccTouchMoved(CCTouch* pTouch, CCEvent* pEvent) {
-	// geode::log::info("Touch moved in AndroidZoomLayer!");
+	if (m_touches.size() == 1) {
+		auto touch = m_touches[0];
+		auto delta = touch->getDelta();
+		auto pos = m_playLayer->getPosition();
+		m_playLayer->setPosition(pos.x + delta.x, pos.y + delta.y);
+		clampPlayLayerPos();
+	} else {
+		// TODO: Add zoom functionality here
+	}
 }
 
 void AndroidZoomLayer::ccTouchEnded(CCTouch* pTouch, CCEvent* pEvent) {
