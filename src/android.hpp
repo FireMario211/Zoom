@@ -1,4 +1,4 @@
-// #ifdef GEODE_IS_ANDROID64
+#ifdef GEODE_IS_ANDROID
 #pragma once
 
 #include <Geode/Geode.hpp>
@@ -34,4 +34,4 @@ private:
 	std::vector<CCTouch*> m_touches = {};
 };
 
-// #endif
+#endif 

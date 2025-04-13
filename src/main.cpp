@@ -18,14 +18,9 @@
 using namespace geode::prelude;
 using namespace keybinds;
 
-// TODO: Uncomment this
-// #if defined(GEODE_IS_WINDOWS)
-// #include "windows.hpp"
-// #elif defined(GEODE_IS_ANDROID64)
-// #include "android.hpp"
-// #endif
-
+#if defined(GEODE_IS_ANDROID)
 #include "android.hpp"
+#endif
 
 float clamp(float d, float min, float max) {
 	const float t = d < min ? min : d;
@@ -37,8 +32,8 @@ $execute {
 
 	#if defined(GEODE_IS_WINDOWS)
 		geode::log::info("Windows detected.");
-	#elif defined(GEODE_IS_ANDROID64)
-		geode::log::info("Android 64-bit detected.");
+	#elif defined(GEODE_IS_ANDROID)
+		geode::log::info("Android detected.");
 	#else
 		geode::log::error("Unknown platform detected.");
 		return;

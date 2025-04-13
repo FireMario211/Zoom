@@ -12,6 +12,7 @@ SettingsManager* SettingsManager::get() {
 }
 
 void SettingsManager::init() {
+	#if defined(GEODE_IS_WINDOWS)
 	autoHideMenu = Mod::get()->getSettingValue<bool>("auto-hide-menu");
 	listenForSettingChanges("auto-hide-menu", [&](bool enable) {
 		autoHideMenu = enable;
@@ -35,4 +36,5 @@ void SettingsManager::init() {
         "Zoom",
 		false
     });
+	#endif // GEODE_IS_WINDOWS
 }

@@ -1,4 +1,4 @@
-// #ifdef GEODE_IS_ANDROID64
+#ifdef GEODE_IS_ANDROID
 
 #include "utils.hpp"
 #include "android.hpp"
@@ -96,8 +96,6 @@ bool AndroidZoomLayer::init(CCNode* sceneLayer) {
 }
 
 void AndroidZoomLayer::onBackButton(CCObject* sender) {
-	geode::log::info("Back button pressed in AndroidZoomLayer!");
-
 	m_playLayer->setScale(1.0f);
 	m_playLayer->setPosition(ccp(0, 0));
 	m_pauseLayer->setVisible(true);
@@ -147,8 +145,6 @@ void AndroidZoomLayer::ccTouchMoved(CCTouch* pTouch, CCEvent* pEvent) {
 		CCPoint delta = movingTouch->getDelta();
 		CCPoint touchDisplacement = ccpSub(movingTouch->getLocation(), anchoredTouch->getLocation());
 		float scaleDelta = touchDisplacement.normalize().dot(delta) / 100.0f;
-		
-		geode::log::info("Zooming with scale {} anchored at ({}, {})", scaleDelta, m_ZoomAnchor.x, m_ZoomAnchor.y);
 		
 		zoomPlayLayer(m_playLayer, scaleDelta, m_ZoomAnchor);
 		clampPlayLayerPos(m_playLayer);
@@ -204,4 +200,4 @@ class $modify(AndroidZoomPauseLayer, PauseLayer) {
 	}
 };
 
-// #endif
+#endif // GEODE_IS_ANDROID

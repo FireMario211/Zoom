@@ -5,8 +5,9 @@ public:
 	static SettingsManager* get();
 	void init();
 
-	// TODO: Macro these based on platform
+	#if defined(GEODE_IS_WINDOWS)
 	bool autoHideMenu;
 	bool autoShowMenu;
 	bool altDisablesZoom;
+	#endif
 };
