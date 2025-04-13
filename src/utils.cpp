@@ -3,8 +3,14 @@
 #include "utils.hpp"
 using namespace geode::prelude;
 
-void zoomPlayLayer(CCNode* playLayer, float delta, CCPoint anchorPoint) {
+void zoomPlayLayer(CCNode* playLayer, float delta, CCPoint screenAnchor) {
 	if (!playLayer) return;
+
+	CCSize contentSize = playLayer->getContentSize();
+	CCPoint anchorPoint = ccp(
+		screenAnchor.x - contentSize.width / 2,
+		-screenAnchor.y + contentSize.height / 2
+	);
 
 	float oldScale = playLayer->getScale();
 	float newScale;

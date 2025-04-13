@@ -20,7 +20,14 @@ public:
 	void ccTouchCancelled(CCTouch* pTouch, CCEvent* pEvent) override;
 	void onBackButton(CCObject* sender);
 	void onBackButton23(CCObject* sender);
+
+	void removeTouchEvent(CCTouch* pTouch, CCEvent* pEvent);
 private:
+	CCPoint getAnchorPoint(CCTouch* touch1, CCTouch* touch2);
+
+	bool m_isZooming = false;
+	CCPoint m_ZoomAnchor = ccp(0, 0);
+
 	CCNode* m_sceneLayer;
 	CCNode* m_playLayer;
 	CCNode* m_pauseLayer;

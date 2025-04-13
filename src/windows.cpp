@@ -54,10 +54,8 @@ void WindowsZoomManager::zoom(float delta) {
 	if (!playLayer) return;
 
 	CCPoint mouseScreenPos = getMousePosOnScreen();
-	CCSize contentSize = playLayer->getContentSize();
-	CCPoint anchorPoint = CCPoint { mouseScreenPos.x - contentSize.width / 2, -mouseScreenPos.y + contentSize.height / 2};
 
-	zoomPlayLayer(playLayer, delta, anchorPoint);
+	zoomPlayLayer(playLayer, delta, mouseScreenPos);
 	onScreenModified();
 }
 
