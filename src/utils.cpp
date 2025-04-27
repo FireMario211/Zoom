@@ -7,7 +7,7 @@ void zoomPlayLayer(CCNode* playLayer, float delta, CCPoint screenAnchor) {
 	CCSize contentSize = playLayer->getContentSize();
 	CCPoint anchorPoint = ccp(
 		screenAnchor.x - contentSize.width / 2,
-		-screenAnchor.y + contentSize.height / 2
+		screenAnchor.y - contentSize.height / 2
 	);
 
 	float oldScale = playLayer->getScale();

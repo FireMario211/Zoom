@@ -1,5 +1,7 @@
 # 1.2.3
 Added support for Prevter's [Smooth Scroll](https://geode-sdk.org/mods/prevter.smooth-scroll) mod
+Fixed a bug with on mobile where it wouldn't quite zoom in on where your fingers where
+Added scroll sensitivity option
 
 # 1.2.2
 Fixed dependency issues on mobile
@@ -10,9 +12,8 @@ Fixed a bug where the mobile zoom menu wouldn't open sometimes
 # 1.2.0
 Added Mobile Support!
 
-NOTE: IOS is completely untested because I don't own one :)
-
-If there are any issues, please report them on GitHub and I'll do my best to fix them
+NOTE: Because I don't own an iOS device, there may be a couple of bugs on Apple devices.
+If there are any issues, please report them on GitHub and I'll do my best to fix them :)
 
 # 1.1.1
 Version Bump

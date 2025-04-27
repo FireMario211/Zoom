@@ -13,7 +13,11 @@ Allows you to zoom while on the pause menu!
 ## Mobile
 
 - Press the magnifying glass button in the pause menu to enter Zoooom Mode (TM)
-- When in Zoooom Mode (TM), you can pinch to zoom and when you're done, you can exit using the back button in the top left 
+- When in Zoooom Mode (TM), you can pinch to zoom and when you're done, you can exit using the back button in the top left
+
+# Note about iOS
+Because I don't own an iOS device, there may be a couple of bugs on Apple devices.
+If there are any issues, please report them on GitHub and I'll do my best to fix them :)
 
 # Known Bugs
 
