@@ -130,7 +130,9 @@ void WindowsZoomManager::onPause() {
 
 void WindowsZoomManager::onScroll(float y, float x) {
 	if (!isPaused) return;
-	if (SettingsManager::get()->autoHideMenu) setPauseMenuVisible(false);
+
+	CCNode* playLayer = CCScene::get()->getChildByID("PlayLayer");
+	if (!playLayer) return;
 
 	if (SettingsManager::get()->altDisablesZoom) {
 		auto kb = CCKeyboardDispatcher::get();
@@ -139,14 +141,22 @@ void WindowsZoomManager::onScroll(float y, float x) {
 		}
 	}
 	
-	float zoomDelta = 0.1f;
+	float zoomDelta = SettingsManager::get()->zoomSensitivity * 0.1f;
 	
 	if (Loader::get()->isModLoaded("prevter.smooth-scroll")) {
-		zoom(-y * 0.01f);
+		zoom(-y * zoomDelta * 0.1f);
 	} else if (y > 0) {
 		zoom(-zoomDelta);
 	} else {
 		zoom(zoomDelta);
+	}
+
+	if (y > 0) {
+		if (SettingsManager::get()->autoShowMenu && playLayer->getScale() <= 1.01f) {
+			setPauseMenuVisible(true);
+		}
+	} else {
+		if (SettingsManager::get()->autoHideMenu) setPauseMenuVisible(false);
 	}
 }
 
@@ -156,10 +166,6 @@ void WindowsZoomManager::onScreenModified() {
 
 	clampPlayLayerPos(playLayer);
 	if (!isPaused) return;
-
-	if (SettingsManager::get()->autoShowMenu && playLayer->getScale() <= 1.05f) {
-		setPauseMenuVisible(true);
-	}
 }
 
 class $modify(PauseLayer) {

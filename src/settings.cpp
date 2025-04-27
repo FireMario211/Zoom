@@ -31,6 +31,11 @@ void SettingsManager::init() {
 		altDisablesZoom = enable;
 	});
 
+	zoomSensitivity = Mod::get()->getSettingValue<float>("zoom-sensitivity");
+	listenForSettingChanges("zoom-sensitivity", [&](float sensitivity) {
+		zoomSensitivity = sensitivity;
+	});
+
     BindManager::get()->registerBindable({
         "toggle_menu"_spr,
         "Toggle Pause Menu",

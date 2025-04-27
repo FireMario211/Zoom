@@ -36,6 +36,18 @@
 		"utility"
 	],
 	"settings": {
+		"zoom-sensitivity": {
+			"name": "Zoom Speed",
+			"description": "The zoom sensitivity. Higher values zoom in faster.",
+			"type": "float",
+			"default": 1,
+			"min": 0.1,
+			"max": 10,
+			"control": {
+				"slider": true
+			},
+			"platforms": ["win"]
+		},
 		"auto-hide-menu": {
 			"name": "Auto Hide Menu",
 			"description": "Automatically hides the menu when you zoom in.",

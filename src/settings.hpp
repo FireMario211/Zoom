@@ -9,5 +9,6 @@ public:
 	bool autoHideMenu;
 	bool autoShowMenu;
 	bool altDisablesZoom;
+	float zoomSensitivity;
 	#endif
 };
