@@ -138,11 +138,15 @@ void WindowsZoomManager::onScroll(float y, float x) {
 			return;
 		}
 	}
-
-	if (y > 0) {
-		zoom(-0.1f);
+	
+	float zoomDelta = 0.1f;
+	
+	if (Loader::get()->isModLoaded("prevter.smooth-scroll")) {
+		zoom(-y * 0.01f);
+	} else if (y > 0) {
+		zoom(-zoomDelta);
 	} else {
-		zoom(0.1f);
+		zoom(zoomDelta);
 	}
 }
 
@@ -153,7 +157,7 @@ void WindowsZoomManager::onScreenModified() {
 	clampPlayLayerPos(playLayer);
 	if (!isPaused) return;
 
-	if (SettingsManager::get()->autoShowMenu && playLayer->getScale() == 1.0f) {
+	if (SettingsManager::get()->autoShowMenu && playLayer->getScale() <= 1.05f) {
 		setPauseMenuVisible(true);
 	}
 }

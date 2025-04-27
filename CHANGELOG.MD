@@ -1,3 +1,6 @@
+# 1.2.3
+Added support for Prevter's [Smooth Scroll](https://geode-sdk.org/mods/prevter.smooth-scroll) mod
+
 # 1.2.2
 Fixed dependency issues on mobile
 
