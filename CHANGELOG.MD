@@ -1,3 +1,6 @@
+# 1.2.2
+Fixed dependency issues on mobile
+
 # 1.2.1
 Fixed a bug where the mobile zoom menu wouldn't open sometimes
 
