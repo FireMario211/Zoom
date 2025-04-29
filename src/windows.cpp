@@ -250,17 +250,17 @@ class $modify(CCEGLView) {
 };
 #else
 void otherMouseDownHook(void* self, SEL sel, void* event) {
-    WindowsZoomManager::get()->isPanning = true;
+	WindowsZoomManager::get()->isPanning = true;
 	reinterpret_cast<void(*)(void*, SEL, void*)>(objc_msgSend)(self, sel, event);
 }
 
 void otherMouseUpHook(void* self, SEL sel, void* event) {
-    WindowsZoomManager::get()->isPanning = false;
+	WindowsZoomManager::get()->isPanning = false;
 	reinterpret_cast<void(*)(void*, SEL, void*)>(objc_msgSend)(self, sel, event);
 }
 
 $execute {
-    if (auto hook = ObjcHook::create("EAGLView", "otherMouseDown:", &otherMouseDownHook)) {
+	if (auto hook = ObjcHook::create("EAGLView", "otherMouseDown:", &otherMouseDownHook)) {
 		(void) Mod::get()->claimHook(hook.unwrap());
 	}
 	
