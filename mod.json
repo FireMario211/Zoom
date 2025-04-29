@@ -47,28 +47,28 @@
 			"control": {
 				"slider": true
 			},
-			"platforms": ["win"]
+			"platforms": ["win", "mac"]
 		},
 		"auto-hide-menu": {
 			"name": "Auto Hide Menu",
 			"description": "Automatically hides the menu when you zoom in.",
 			"type": "bool",
 			"default": true,
-			"platforms": ["win"]
+			"platforms": ["win", "mac"]
 		},
 		"auto-show-menu": {
 			"name": "Auto Show Menu",
 			"description": "Automatically shows the menu when you zoom back out.",
 			"type": "bool",
 			"default": true,
-			"platforms": ["win"]
+			"platforms": ["win", "mac"]
 		},
 		"alt-disables-zoom": {
 			"name": "Alt Disables Zoom",
 			"description": "Disables zooming while Alt is held.",
 			"type": "bool",
 			"default": true,
-			"platforms": ["win"]
+			"platforms": ["win", "mac"]
 		}
 	}
 }

@@ -4,8 +4,6 @@
 #include "windows.hpp"
 #include "settings.hpp"
 
-#include <charconv>
-
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 
 #include <Geode/Geode.hpp>
@@ -14,7 +12,11 @@
 #include <Geode/modify/CCKeyboardDispatcher.hpp>
 #include <Geode/modify/CCMouseDispatcher.hpp>
 #include <Geode/modify/PlayLayer.hpp>
+#ifdef GEODE_IS_WINDOWS
 #include <Geode/modify/CCEGLView.hpp>
+#else
+#include <objc/message.h>
+#endif // GEODE_IS_WINDOWS
 #include <Geode/modify/CCScheduler.hpp>
 
 using namespace geode::prelude;
@@ -231,6 +233,7 @@ class $modify(CCScheduler) {
 	}
 };
 
+#ifdef GEODE_IS_WINDOWS
 class $modify(CCEGLView) {
 	void onGLFWMouseCallBack(GLFWwindow* window, int button, int action, int mods) {
 		if (button == GLFW_MOUSE_BUTTON_MIDDLE) {
@@ -245,6 +248,27 @@ class $modify(CCEGLView) {
 		CCEGLView::onGLFWMouseCallBack(window, button, action, mods);
 	}
 };
+#else
+void otherMouseDownHook(void* self, SEL sel, void* event) {
+    WindowsZoomManager::get()->isPanning = true;
+	reinterpret_cast<void(*)(void*, SEL, void*)>(objc_msgSend)(self, sel, event);
+}
+
+void otherMouseUpHook(void* self, SEL sel, void* event) {
+    WindowsZoomManager::get()->isPanning = false;
+	reinterpret_cast<void(*)(void*, SEL, void*)>(objc_msgSend)(self, sel, event);
+}
+
+$execute {
+    if (auto hook = ObjcHook::create("EAGLView", "otherMouseDown:", &otherMouseDownHook)) {
+		(void) Mod::get()->claimHook(hook.unwrap());
+	}
+	
+	if (auto hook = ObjcHook::create("EAGLView", "otherMouseUp:", &otherMouseUpHook)) {
+		(void) Mod::get()->claimHook(hook.unwrap());
+	}
+}
+#endif // GEODE_IS_WINDOWS
 
 class $modify(CCMouseDispatcher) {
 	bool dispatchScrollMSG(float y, float x) {
