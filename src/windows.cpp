@@ -55,7 +55,7 @@ void WindowsZoomManager::zoom(float delta) {
 
 	CCPoint mouseScreenPos = getMousePosOnScreen();
 
-	zoomPlayLayer(playLayer, delta, mouseScreenPos);
+	zoomPlayLayer(playLayer, delta, mouseScreenPos, true);
 	onScreenModified();
 }
 

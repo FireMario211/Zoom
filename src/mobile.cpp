@@ -142,7 +142,7 @@ void AndroidZoomLayer::ccTouchMoved(CCTouch* pTouch, CCEvent* pEvent) {
 		CCPoint touchDisplacement = ccpSub(movingTouch->getLocation(), anchoredTouch->getLocation());
 		float scaleDelta = touchDisplacement.normalize().dot(delta) / 100.0f;
 		
-		zoomPlayLayer(m_playLayer, scaleDelta, m_ZoomAnchor);
+		zoomPlayLayer(m_playLayer, scaleDelta, m_ZoomAnchor, false);
 		clampPlayLayerPos(m_playLayer);
 	}
 }
