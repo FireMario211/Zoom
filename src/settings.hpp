@@ -5,7 +5,7 @@ public:
 	static SettingsManager* get();
 	void init();
 
-	#if defined(GEODE_IS_WINDOWS)
+	#ifdef GEODE_IS_DESKTOP
 	bool autoHideMenu;
 	bool autoShowMenu;
 	bool altDisablesZoom;

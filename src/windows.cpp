@@ -1,4 +1,4 @@
-#ifdef GEODE_IS_WINDOWS
+#ifdef GEODE_IS_DESKTOP
 
 #include "utils.hpp"
 #include "windows.hpp"
@@ -93,7 +93,7 @@ CCPoint WindowsZoomManager::screenToWorld(CCPoint pos) {
 }
 
 CCPoint WindowsZoomManager::getMousePosOnScreen() {
-	return screenToWorld(CCEGLView::get()->getMousePosition());
+	return screenToWorld(getMousePos());
 }
 
 CCPoint WindowsZoomManager::getMousePosOnNode(CCNode* node) {
@@ -101,7 +101,7 @@ CCPoint WindowsZoomManager::getMousePosOnNode(CCNode* node) {
 }
 
 void WindowsZoomManager::update(float dt) {
-	auto mousePos = CCEGLView::get()->getMousePosition();
+	auto mousePos = getMousePos();
 	auto lastMousePos = WindowsZoomManager::get()->lastMousePos;
 
 	WindowsZoomManager::get()->deltaMousePos = CCPoint{ mousePos.x - lastMousePos.x, mousePos.y - lastMousePos.y };
@@ -252,4 +252,4 @@ class $modify(CCMouseDispatcher) {
 		return CCMouseDispatcher::dispatchScrollMSG(y, x);
 	}
 };
-#endif // GEODE_IS_WINDOWS
+#endif // GEODE_IS_DESKTOP

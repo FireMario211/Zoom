@@ -1,4 +1,4 @@
-#ifdef GEODE_IS_WINDOWS
+#ifdef GEODE_IS_DESKTOP
 #pragma once
 
 #include <Geode/Geode.hpp>
@@ -36,4 +36,4 @@ public:
 private:
 	void onScreenModified();
 };
-#endif // GEODE_IS_WINDOWS
+#endif // GEODE_IS_DESKTOP

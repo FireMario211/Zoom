@@ -4,7 +4,7 @@
 
 using namespace geode::prelude;
 
-#if defined(GEODE_IS_WINDOWS)
+#ifdef GEODE_IS_DESKTOP
 #include <geode.custom-keybinds/include/Keybinds.hpp>
 using namespace keybinds;
 #endif
@@ -15,7 +15,7 @@ SettingsManager* SettingsManager::get() {
 }
 
 void SettingsManager::init() {
-	#if defined(GEODE_IS_WINDOWS)
+	#ifdef GEODE_IS_DESKTOP
 	autoHideMenu = Mod::get()->getSettingValue<bool>("auto-hide-menu");
 	listenForSettingChanges("auto-hide-menu", [&](bool enable) {
 		autoHideMenu = enable;
@@ -44,5 +44,5 @@ void SettingsManager::init() {
         "Zoom",
 		false
     });
-	#endif // GEODE_IS_WINDOWS
+	#endif // GEODE_IS_DESKTOP
 }
