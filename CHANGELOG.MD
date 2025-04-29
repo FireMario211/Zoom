@@ -1,3 +1,6 @@
+# 1.2.4
+Fixed bug where zoom would be inverted on PC
+
 # 1.2.3
 Added support for Prevter's [Smooth Scroll](https://geode-sdk.org/mods/prevter.smooth-scroll) mod
 Fixed a bug with on mobile where it wouldn't quite zoom in on where your fingers where
