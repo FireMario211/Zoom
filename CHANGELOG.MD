@@ -1,3 +1,7 @@
+# 1.3.0
+Added Mac support! Massive thanks to [hiimjasmine00](https://github.com/hiimjasmine00), she did all the work :))
+Updated to Geode 4.4.0
+
 # 1.2.4
 Fixed bug where zoom would be inverted on PC
 
