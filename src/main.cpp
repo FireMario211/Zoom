@@ -13,7 +13,7 @@
 
 #include "settings.hpp"
 
-#if defined(GEODE_IS_ANDROID) || defined(GEODE_IS_IOS)
+#ifdef GEODE_IS_MOBILE
 #include "mobile.hpp"
 #endif
 
@@ -26,17 +26,7 @@ float clamp(float d, float min, float max) {
 
 $execute {
 	geode::log::info("Zoom mod loaded!");
-
-	#if defined(GEODE_IS_WINDOWS)
-		geode::log::info("Windows detected.");
-	#elif defined(GEODE_IS_ANDROID)
-		geode::log::info("Android detected.");
-	#elif defined(GEODE_IS_IOS)
-		geode::log::info("IOS detected.");
-	#else
-		geode::log::error("Unknown platform detected.");
-		return;
-	#endif
+	geode::log::info("Platform: " GEODE_PLATFORM_NAME);
 
 	SettingsManager::get()->init();
 }
