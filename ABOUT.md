@@ -20,7 +20,7 @@ Allows you to zoom while on the pause menu!
 Huge thanks to [hiimjasmine00](https://github.com/hiimjasmine00) for adding macOS support!
 
 # Note about macOS and iOS
-Because I don't own an Apple device, there may be a couple of bugs on Apple devices.
+Because I don't own any Apple devices, there may be a couple of bugs when using macOS or iOS
 If there are any issues, please report them on GitHub and I'll do my best to fix them :)
 
 # Known Bugs
