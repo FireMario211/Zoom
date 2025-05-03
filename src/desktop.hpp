@@ -27,7 +27,7 @@ public:
 	void move(CCPoint delta);
 
 	float getZoom();
-	CCPoint getMousePosOnScreen();
+	// CCPoint getMousePosOnScreen();
 	CCPoint getMousePosOnNode(CCNode* node);
 	
 	void onResume();

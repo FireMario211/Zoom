@@ -1,7 +1,7 @@
 #ifdef GEODE_IS_DESKTOP
 
 #include "utils.hpp"
-#include "windows.hpp"
+#include "desktop.hpp"
 #include "settings.hpp"
 
 #include <geode.custom-keybinds/include/Keybinds.hpp>
@@ -55,9 +55,10 @@ void WindowsZoomManager::zoom(float delta) {
 	CCNode* playLayer = CCScene::get()->getChildByID("PlayLayer");
 	if (!playLayer) return;
 
-	CCPoint mouseScreenPos = getMousePosOnScreen();
+	// CCPoint mouseScreenPos = getMousePosOnScreen();
+	CCPoint mousePos = getMousePos();
 
-	zoomPlayLayer(playLayer, delta, mouseScreenPos, true);
+	zoomPlayLayer(playLayer, delta, mousePos);
 	onScreenModified();
 }
 
@@ -94,12 +95,12 @@ CCPoint WindowsZoomManager::screenToWorld(CCPoint pos) {
 	return CCPoint{ pos.x * (screenSize.width / winSize.width), pos.y * (screenSize.height / winSize.height) };
 }
 
-CCPoint WindowsZoomManager::getMousePosOnScreen() {
-	return screenToWorld(getMousePos());
-}
+// CCPoint WindowsZoomManager::getMousePosOnScreen() {
+// 	return screenToWorld(getMousePos());
+// }
 
 CCPoint WindowsZoomManager::getMousePosOnNode(CCNode* node) {
-	return node->convertToNodeSpace(getMousePosOnScreen());
+	return node->convertToNodeSpace(getMousePos());
 }
 
 void WindowsZoomManager::update(float dt) {

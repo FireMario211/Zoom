@@ -5,4 +5,4 @@ using namespace geode::prelude;
 
 CCSize getScreenSize();
 void clampPlayLayerPos(CCNode* playLayer);
-void zoomPlayLayer(CCNode* playLayer, float zoom, CCPoint screenAnchor, bool flipY);
+void zoomPlayLayer(CCNode* playLayer, float zoom, CCPoint screenAnchor);
