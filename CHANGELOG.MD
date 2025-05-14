@@ -1,3 +1,6 @@
+# 1.3.1
+- Fixed a bug with panning on PC
+
 # 1.3.0
 - Added Mac support! Massive thanks to [hiimjasmine00](https://github.com/hiimjasmine00), she did all the work :))
 - Updated to Geode 4.4.0

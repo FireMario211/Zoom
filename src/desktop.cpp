@@ -114,7 +114,7 @@ void WindowsZoomManager::update(float dt) {
 
 	if (isPanning) {
 		CCPoint delta = WindowsZoomManager::get()->deltaMousePos;
-		move(screenToWorld(CCPoint { delta.x, -delta.y }));
+		move(delta);
 	}
 }
 
